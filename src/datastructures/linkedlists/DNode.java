@@ -14,4 +14,11 @@ public class DNode {
         this.next = next;
         this.previous = previous;
     }
+
+    @Override
+    public String toString() {
+        return "DNode{" +
+                "value=" + value +
+                '}';
+    }
 }

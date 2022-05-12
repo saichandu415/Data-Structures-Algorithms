@@ -17,6 +17,17 @@ public class TestingClass {
 //        System.out.println(linkedList.reverse(linkedList));
 
         DLinkedList linkedList = new DLinkedList(10);
+        linkedList.append(11);
+        linkedList.append(23);
+        linkedList.prepend(30);
+        linkedList.insert( 1,44);
         System.out.println(Arrays.toString(linkedList.printList()));
+        linkedList.remove(4);
+        System.out.println(Arrays.toString(linkedList.printList()));
+        linkedList.append(100);
+        System.out.println(Arrays.toString(linkedList.printList()));
+
+//        System.out.println(linkedList);
+//        System.out.println();
     }
 }
