@@ -26,6 +26,7 @@ public class TestingClass {
         System.out.println(Arrays.toString(linkedList.printList()));
         linkedList.append(100);
         System.out.println(Arrays.toString(linkedList.printList()));
+        System.out.println(Arrays.toString(linkedList.printListInReverse()));
 
 //        System.out.println(linkedList);
 //        System.out.println();

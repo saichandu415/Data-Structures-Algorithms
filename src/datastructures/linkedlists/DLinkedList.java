@@ -27,7 +27,7 @@ public class DLinkedList {
 
     public void append(int value) {
         DNode newitem = new DNode(value);
-        newitem.previous = head;
+        newitem.previous = tail;
         tail.next = newitem;
         tail = newitem;
         length++;
@@ -81,6 +81,18 @@ public class DLinkedList {
             tail = current;
             length--;
         }
+    }
+
+    public int[] printListInReverse(){
+        DNode currentTail =  tail;
+        int[] result = new int[length];
+        int i = 0;
+        while(currentTail != null){
+            result[i] = currentTail.value;
+            currentTail = currentTail.previous;
+            i++;
+        }
+        return result;
     }
 
     @Override
