@@ -12,6 +12,8 @@ public class TestSorting {
 //        System.out.println(Arrays.toString(doSelectionSort(input)));
 //        System.out.println(Arrays.toString(doInsertionSort(input)));
 //        System.out.println(doMergeSort(Arrays.asList(1, 4, 7, 3, 8, 2, 9, 5, 6)));
+//        doQuickSort(input, 0 , input.length);
+
     }
 
     public static int[] doBubbleSort(int[] input) {
@@ -106,34 +108,29 @@ public class TestSorting {
         return result;
     }
 
-    private static int[] doQuickSort(int[] input, int leftIndex, int rightIndex) {
-        // TODO: EDIT THIS NOT DONE
-        findPartitionIndex(input, leftIndex, rightIndex);
-        return null;
+    private static void doQuickSort(int[] input, int leftIndex, int length) {
+        if(leftIndex+1 < length){
+            int partitionIndex = findPartitionIndex(input, leftIndex, length-1);
+            doQuickSort(input, leftIndex, partitionIndex);
+            doQuickSort(input, partitionIndex+1, input.length);
+        }
     }
 
     private static int findPartitionIndex(int[] input, int leftIndex, int rightIndex) {
-        // TODO : TEST THIS
-        int partitionIndex = 0;
-        int pivot = input[0];
 
-        while (leftIndex < input.length && rightIndex > 0 && leftIndex > rightIndex) {
-            int temp = 0;
-            if (input[leftIndex] < pivot) {
-                temp = input[leftIndex];
-                input[leftIndex] = input[rightIndex];
+        int pivot = input[rightIndex];
+        while(leftIndex < rightIndex){
+            if(input[leftIndex] >= pivot){
+                int temp = input[leftIndex];
+                input[leftIndex] = input[rightIndex-1];
+                input[rightIndex-1] = input[rightIndex];
                 input[rightIndex] = temp;
-            } else
+                rightIndex--;
+            }else{
                 leftIndex++;
-            if (input[rightIndex] > pivot) {
-                temp = input[leftIndex];
-                input[leftIndex] = input[rightIndex];
-                input[rightIndex] = temp;
-            } else
-                rightIndex++;
+            }
         }
-
-        return partitionIndex;
+        return rightIndex;
     }
 
 
