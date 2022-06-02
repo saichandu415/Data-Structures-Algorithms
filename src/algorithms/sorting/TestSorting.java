@@ -11,7 +11,7 @@ public class TestSorting {
 //        System.out.println(Arrays.toString(doBubbleSort(input)));
 //        System.out.println(Arrays.toString(doSelectionSort(input)));
 //        System.out.println(Arrays.toString(doInsertionSort(input)));
-        System.out.println(doMergeSort(Arrays.asList(1, 4, 7, 3, 8, 2, 9, 5, 6)));
+//        System.out.println(doMergeSort(Arrays.asList(1, 4, 7, 3, 8, 2, 9, 5, 6)));
     }
 
     public static int[] doBubbleSort(int[] input) {
@@ -67,6 +67,7 @@ public class TestSorting {
         }
         return ip;
     }
+
     public static List<Integer> doMergeSort(List<Integer> value) {
         List<Integer> left = new ArrayList<>();
         List<Integer> right = new ArrayList<>();
@@ -79,17 +80,18 @@ public class TestSorting {
         return merge(doMergeSort(left), doMergeSort(right));
 
     }
+
     private static List<Integer> merge(List<Integer> left, List<Integer> right) {
         List<Integer> result = new ArrayList<>();
 
         int leftIndex = 0;
         int rightIndex = 0;
 
-        while (leftIndex < left.size() && rightIndex < right.size()){
-            if (left.get(leftIndex) < right.get(rightIndex)){
+        while (leftIndex < left.size() && rightIndex < right.size()) {
+            if (left.get(leftIndex) < right.get(rightIndex)) {
                 result.add(left.get(leftIndex));
                 leftIndex++;
-            }else{
+            } else {
                 result.add(right.get(rightIndex));
                 rightIndex++;
             }
@@ -102,6 +104,36 @@ public class TestSorting {
         result.addAll(rightRemaining);
 
         return result;
+    }
+
+    private static int[] doQuickSort(int[] input, int leftIndex, int rightIndex) {
+        // TODO: EDIT THIS NOT DONE
+        findPartitionIndex(input, leftIndex, rightIndex);
+        return null;
+    }
+
+    private static int findPartitionIndex(int[] input, int leftIndex, int rightIndex) {
+        // TODO : TEST THIS
+        int partitionIndex = 0;
+        int pivot = input[0];
+
+        while (leftIndex < input.length && rightIndex > 0 && leftIndex > rightIndex) {
+            int temp = 0;
+            if (input[leftIndex] < pivot) {
+                temp = input[leftIndex];
+                input[leftIndex] = input[rightIndex];
+                input[rightIndex] = temp;
+            } else
+                leftIndex++;
+            if (input[rightIndex] > pivot) {
+                temp = input[leftIndex];
+                input[leftIndex] = input[rightIndex];
+                input[rightIndex] = temp;
+            } else
+                rightIndex++;
+        }
+
+        return partitionIndex;
     }
 
 
